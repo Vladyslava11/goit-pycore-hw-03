@@ -1,6 +1,16 @@
 from datetime import datetime, date, timedelta
 
-def get_upcoming_birthdays(users):
+
+def get_upcoming_birthdays(users: list[dict]) -> list[dict]:
+    """
+    Повертає список користувачів з днями народження на найближчі 7 днів.
+
+    Args:
+        users: Список словників з ключами 'name' та 'birthday'.
+
+    Returns:
+        Список словників з іменами та датами привітань.
+    """
     today = datetime.today().date()
     end_day = today + timedelta(days=7)
     result = []
@@ -29,10 +39,11 @@ def get_upcoming_birthdays(users):
     return result
 
 
-users = [
-    {"name": "Vladyslava Slipchenko", "birthday": "1994.10.11"},
-    {"name": "Natalia Slipchenko", "birthday": "1973.03.18"},
-    {"name": "Mykola Kosovsky", "birthday": "1997.05.20"}
-]
+if __name__ == "__main__":
+    users = [
+        {"name": "Vladyslava Slipchenko", "birthday": "1994.02.11"},
+        {"name": "Natalia Slipchenko", "birthday": "1973.02.09"},
+        {"name": "Mykola Kosovsky", "birthday": "1997.02.10"}
+    ]
 
-print(get_upcoming_birthdays(users))
+    print(get_upcoming_birthdays(users))
